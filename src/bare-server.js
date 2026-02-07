@@ -36,10 +36,10 @@ server.on("request", (req, res) => {
 });
 
 server.on("upgrade", (req, socket, head) => {
-    if (bare.shouldRoute(req)) {
-        bare.routeUpgrade(req, socket, head);
-    } else if (req.url.endsWith("/wisp/")) {
+    if (req.url.endsWith("/wisp/")) {
         wisp.handleUpgrade(req, socket, head);
+    } else if (bare.shouldRoute(req)) {
+        bare.routeUpgrade(req, socket, head);
     } else {
         socket.end();
     }
