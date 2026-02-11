@@ -107,7 +107,6 @@ uwsServer.ws('/*', {
                                 ws.send(closePacketMaker(wispFrame_streamID, 0x03), true);
                                 ws.connections.delete(wispFrame_streamID);
                             } catch (error) {
-                                // Handle error
                             }
                         }
                     });
@@ -118,7 +117,6 @@ uwsServer.ws('/*', {
                                 ws.send(closePacketMaker(wispFrame_streamID, 0x02), true);
                                 ws.connections.delete(wispFrame_streamID);
                             } catch (error) {
-                                // Handle error
                             }
                         }
                     });
@@ -172,7 +170,6 @@ uwsServer.ws('/*', {
                                     ws.send(closePacketMaker(wispFrame.streamID, 0x02), true);
                                     ws.connections.delete(wispFrame.streamID);
                                 } catch (error) {
-                                    // Handle error
                                 }
                             }
                         });
@@ -194,7 +191,6 @@ uwsServer.ws('/*', {
                         ws.send(continuePacketMaker(wispFrame.streamID, stream.buffer), true);
                     }
                 } else {
-                    // Handle missing stream
                 }
             }
 

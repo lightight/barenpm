@@ -4,19 +4,19 @@ import { createWispServer } from "./wisp.js";
 
 const wisp = createWispServer();
 
-const bare = createBareServer("/bare/", {
-    logErrors: false,
+const bare = createBareServer("/", {
+    logErrors: true,
     localAddress: undefined,
     maintainer: undefined,
-    connectionLimiter: {
-        maxConnectionsPerIP: 10000
-    }
 });
+
+
+
 
 const server = createServer();
 
 server.on("request", (req, res) => {
-    // Enable CORS for all origins
+    console.log("Bare Server (1103) received:", req.url);
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, X-Bare-Host, X-Bare-Path, X-Bare-Port, X-Bare-Headers, X-Bare-Forward-Headers, X-Bare-URL, X-Bare-Protocol");
